@@ -4,8 +4,8 @@
       "DownstreamPathTemplate": "/persona/{path}",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5018
+          "Host": "hv-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/persona/{path}",

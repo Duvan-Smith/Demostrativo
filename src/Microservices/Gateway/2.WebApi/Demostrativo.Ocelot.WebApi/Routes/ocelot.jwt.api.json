@@ -4,8 +4,8 @@
       "DownstreamPathTemplate": "/jwt/Ejemplo/{path}",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5157
+          "Host": "jwt-service",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/jwt/Ejemplo/{path}",

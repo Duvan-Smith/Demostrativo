@@ -7,7 +7,7 @@
         {
           "Name": "Hoja de vida",
           "Version": "v1",
-          "Url": "http://localhost:5018/swagger/v1/swagger.json"
+          "Url": "http://hv-service/swagger/v1/swagger.json"
         }
       ]
     },
@@ -18,7 +18,7 @@
         {
           "Name": "Jwt",
           "Version": "v1",
-          "Url": "http://localhost:5157/swagger/v1/swagger.json"
+          "Url": "http://jwt-service/swagger/v1/swagger.json"
         }
       ]
     }
