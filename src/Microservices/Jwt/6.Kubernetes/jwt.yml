@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jwt-deployment
+  labels:
+    app: jwt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jwt
+  template:
+    metadata:
+      labels:
+        app: jwt
+    spec:
+      containers:
+      - name: jwt
+        image: crk8s.azurecr.io/jwtwebapi:v2.#{Build.BuildId}#
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_USER
+          valueFrom: 
+            secretKeyRef:
+              name: postgres-secret
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: postgres-secret
+              key: DB_PASSWORD
+        - name: DB_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: postgres-config
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom: 
+            configMapKeyRef:
+              name: postgres-config
+              key: DB_PORT
+        - name: DB_NAME_PD
+          valueFrom: 
+            configMapKeyRef:
+              name: jwt-config
+              key: DB_NAME_PD
+        - name: RabbitMQSettings__Hostname
+          valueFrom: 
+             configMapKeyRef:
+               name: rabbitmq-config
+               key: RMQSHOSTNAME
+        - name: RabbitMQSettings__Username
+          valueFrom: 
+             secretKeyRef:
+               name: rabbitmq-secret
+               key: RMQSUSER
+        - name: RabbitMQSettings__Password
+          valueFrom: 
+             secretKeyRef:
+               name: rabbitmq-secret
+               key: RMQSPASS
+      imagePullSecrets:
+      - name: demostrativo-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jwt-service
+spec:
+  selector:
+    app: jwt
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocelot-deployment
+  labels:
+    app: ocelot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocelot
+  template:
+    metadata:
+      labels:
+        app: ocelot
+    spec:
+      containers:
+      - name: ocelot
+        image: crk8s.azurecr.io/gateway:v2.#{Build.BuildId}#
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+      imagePullSecrets:
+      - name: demostrativo-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocelot-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ocelot
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30010
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+      nodePort: 30011

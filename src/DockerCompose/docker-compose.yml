@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  demostrativo.ocelot.webapi:
+    hostname: ocelot-service
+    image: ${DOCKER_REGISTRY-}demostrativoocelotwebapi
+    build:
+      context: ..
+      dockerfile: Microservices/Gateway/2.WebApi/Demostrativo.Ocelot.WebApi/Dockerfile
+
+  demostrativo.hv.webapi:
+    hostname: hv-service
+    image: ${DOCKER_REGISTRY-}demostrativohvwebapi
+    build:
+      context: ..
+      dockerfile: Microservices/HojaDeVida/Demostrativo.HV.WebApi/Dockerfile
+
+
+  demostrativo.jwt.webapi:
+    hostname: jwt-service
+    image: ${DOCKER_REGISTRY-}demostrativojwtwebapi
+    build:
+      context: ..
+      dockerfile: Microservices/Jwt/2.WebApi/Demostrativo.Jwt.WebApi/Dockerfile
+

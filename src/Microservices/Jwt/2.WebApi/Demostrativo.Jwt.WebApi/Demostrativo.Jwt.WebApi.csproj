@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>b0ebd070-45dc-4a28-8ff3-e72c2fd839ea</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..\..</DockerfileContext>
+    <!--<DockerComposeProjectPath>..\..\..\..\DockerCompose\docker-compose.dcproj</DockerComposeProjectPath>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Brokers\RabbitMQ\Infra.Bus\Micro.Infra.Bus\Micro.Infra.Bus.csproj" />
+    <ProjectReference Include="..\..\..\..\Brokers\RabbitMQ\Infra.IoC\Micro.Infra.IoC\Micro.Infra.IoC.csproj" />
+    <ProjectReference Include="..\..\3.Aplication\Demostrativo.Jwt.Aplication.Core\Demostrativo.Jwt.Aplication.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjectionFixed" Version="5.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Brokers\RabbitMQ\Domain\Micro.Domain.Core\Micro.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\5.Infrastructure\5.1.Data\Demostrativo.Jwt.Persistence\Demostrativo.Jwt.Persistence.csproj" />
+    <ProjectReference Include="..\Demostrativo.Jwt.Aplication.Dto\Demostrativo.Jwt.Aplication.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

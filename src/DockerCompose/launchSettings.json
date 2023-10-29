@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "demostrativo.ocelot.webapi": "StartDebugging",
+        "demostrativo.hv.webapi": "StartDebugging",
+        "demostrativo.jwt.webapi": "StartDebugging"
+      }
+    }
+  }
+}
