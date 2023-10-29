@@ -9,6 +9,9 @@ sudo docker build -t demostrativoocelotwebapi:latest --file src/Microservices/Ga
 sudo docker build -t demostrativohvwebapi:latest --file src/Microservices/HojaDeVida/Demostrativo.HV.WebApi/Dockerfile .
 sudo docker build -t demostrativojwtwebapi:latest --file src/Microservices/Jwt/2.WebApi/Demostrativo.Jwt.WebApi/Dockerfile .
 
+cd src/DockerCompose
+sudo docker compose up
+
 Migraciones
 Win:
 Comando para agregar migracion desde Consola vs: add-migration "init" -context PersistenceDbContext
