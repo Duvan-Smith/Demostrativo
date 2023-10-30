@@ -12,6 +12,10 @@ sudo docker build -t demostrativojwtwebapi:latest --file src/Microservices/Jwt/2
 cd src/DockerCompose
 sudo docker compose up
 
+en caso de que fallen las imagenes de pgAdmin o postgressql por falla en los volumenes, se debe dar permisos a estos:
+sudo chmod 777 -R ./postgres-volumen
+sudo chmod 777 -R ./pgadmin-volumen
+
 Migraciones
 Win:
 Comando para agregar migracion desde Consola vs: add-migration "init" -context PersistenceDbContext

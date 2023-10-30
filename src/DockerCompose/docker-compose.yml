@@ -1,6 +1,27 @@
 version: '3.4'
 
 services:
+  dbpostgres:
+    container_name: postgres-service
+    image: postgres:15.2
+    volumes:
+      - './postgres-volumen:/var/lib/postgressql/data'
+    environment:
+      - POSTGRES_PASSWORD=demostrativoP
+
+  pgAdmin:
+    container_name: pgadmin-service
+    depends_on:
+      - dbpostgres
+    image: dpage/pgadmin4:7.0
+    ports:
+      - "8080:80"
+    volumes:
+      - './pgadmin-volumen:/var/lib/pgadmin'
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=demostrativoP
+      - PGADMIN_DEFAULT_EMAIL=dsmith.mr@gmail.com
+
   demostrativo.ocelot.webapi:
     hostname: ocelot-service
     image: ${DOCKER_REGISTRY-}demostrativoocelotwebapi
@@ -18,8 +39,12 @@ services:
 
   demostrativo.jwt.webapi:
     hostname: jwt-service
+    depends_on:
+      - dbpostgres
     image: ${DOCKER_REGISTRY-}demostrativojwtwebapi
     build:
       context: ..
       dockerfile: Microservices/Jwt/2.WebApi/Demostrativo.Jwt.WebApi/Dockerfile
+    environment:
+      - ConnectionStrings_JwtDB=Server=postgres-service;Database=jwtdb;Port=5432;User Id=postgres;Password=demostrativoP;
 
