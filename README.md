@@ -1,7 +1,7 @@
 # Demostrativo
 Proyecto demostrativo para el BE. Se plantea crear varios micro servicios que contaran con los conocimientos acumulados y seran consumidos por diversos FE.
 
-Win: Ejecutar con Visual Studio con docker-compose
+Win: Ejecutar con Visual Studio con docker-compose o seleccionar la ejecucion de multiples proyectos, para este segundo caso se debe contar con postgres y que los proyectos se ejecuten en https
 
 Linux: Desde terminal
 cd Demostrativo
