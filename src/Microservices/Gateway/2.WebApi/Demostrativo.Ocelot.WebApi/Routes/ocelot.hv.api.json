@@ -10,7 +10,11 @@
       ],
       "UpstreamPathTemplate": "/persona/{path}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "SwaggerKey": "hv"
+      "SwaggerKey": "hv",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      }
     }
   ]
 }

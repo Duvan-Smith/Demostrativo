@@ -1,10 +1,12 @@
 using Demostrativo.HV.WebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demostrativo.HV.WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class PersonaController : ControllerBase
 {
     private readonly ILogger<PersonaController> _logger;

@@ -1,7 +1,10 @@
+using Demostrativo.Ids.Configs.Api;
+using Demostrativo.Ids.Configs.Clients;
+using Demostrativo.Ids.Configs.Identity;
+using Demostrativo.Ids.Configs.Scopes;
 using IdentityServer4;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ProyectoIds4.IdentityServer4AspNet;
 using ProyectoIds4.IdentityServer4AspNet.Data;
 using ProyectoIds4.IdentityServer4AspNet.Models;
 
@@ -9,8 +12,20 @@ string MiCors = "MiCords";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options => options.AddPolicy(name: MiCors, builder =>
-    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+builder.Services.AddCors(o => o.AddPolicy(MiCors, builder =>
+{
+    builder
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+        .WithOrigins(new[]
+        {
+            "https://localhost:3000",
+            "https://localhost:5001",
+            "https://localhost:5002",
+        })
+        .SetIsOriginAllowedToAllowWildcardSubdomains();
+}));
 
 #region Auth
 builder.Services.AddControllersWithViews();
@@ -32,10 +47,10 @@ var builderIds = builder.Services.AddIdentityServer(options =>
     // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
     options.EmitStaticAudienceClaim = true;
 })
-    .AddInMemoryIdentityResources(Config.IdentityResources)
-    .AddInMemoryApiResources(Config.ApiResources)
-    .AddInMemoryApiScopes(Config.ApiScopes)
-    .AddInMemoryClients(Config.Clients)
+    .AddInMemoryIdentityResources(IdentityResourcesHelper.GetIdentityResources())
+    .AddInMemoryApiResources(ApiResourcesHelper.GetApiResources())
+    .AddInMemoryApiScopes(ScopesHelper.GetApiScopes())
+    .AddInMemoryClients(ClientsHelper.GetClients())
     .AddAspNetIdentity<ApplicationUser>();
 
 // not recommended for production - you need to store your key material somewhere secures
