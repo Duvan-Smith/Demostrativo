@@ -10,7 +10,7 @@ Este repositorio contiene un proyecto demostrativo para el backend (BE). El obje
 
 ### Linux
 
-Desde la terminal:
+- Desde la terminal:
 
 ```bash
 cd Demostrativo
@@ -22,7 +22,7 @@ cd src/DockerCompose
 sudo docker compose up
 ```
 
-En caso de que fallen las imágenes de pgAdmin o PostgreSQL por fallas en los volúmenes, otorga permisos a estos:
+- En caso de que fallen las imágenes de pgAdmin o PostgreSQL por fallas en los volúmenes, otorga permisos a estos:
 
 ```bash
 sudo chmod 777 -R ./postgres-volumen
@@ -33,15 +33,15 @@ sudo chmod 777 -R ./pgadmin-volumen
 
 ### Windows
 
-Comando para agregar migración desde Consola de Visual Studio:
+- Comando para agregar migración desde Consola de Visual Studio:
 
 ```bash
 add-migration "init" -context PersistenceDbContext
 ```
 
-## Linux
+### Linux
 
-Ubícate en el proyecto del contexto y ejecuta el siguiente comando en la terminal:
+- Ubícate en el proyecto del contexto y ejecuta el siguiente comando en la terminal:
 
 ```bash
 dotnet ef --startup-project ../../../2.WebApi/Demostrativo.Jwt.WebApi --verbose migrations add Initial --context PersistenceDbContext
